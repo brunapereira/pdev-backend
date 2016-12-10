@@ -34,6 +34,7 @@ list activities =
                 ]
             , tbody [] (List.map activityRow activities)
             ]
+        , p [] [ text (toString activities) ]
         ]
 
 

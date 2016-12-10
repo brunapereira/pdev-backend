@@ -14,7 +14,7 @@ fetchAll =
 
 fetchAllUrl : String
 fetchAllUrl =
-    "http://localhost:4000/activities"
+    "https://pdev-9f7fc.firebaseio.com/activities.json"
 
 
 collectionDecoder : Decode.Decoder (List Activity)
