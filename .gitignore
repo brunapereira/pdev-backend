@@ -3,3 +3,4 @@ node_modules/
 elm-stuff/
 elm.js
 dist/
+npm-debug.log
