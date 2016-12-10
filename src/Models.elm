@@ -1,5 +1,14 @@
 module Models exposing (..)
 
+import Activities.Models exposing (Activity)
+
 
 type alias Model =
-    String
+    { activities : List Activity
+    }
+
+
+initialModel : Model
+initialModel =
+    { activities = []
+    }

@@ -1,15 +1,16 @@
 module Main exposing (..)
 
 import Html exposing (program)
-import Messages exposing (Msg)
-import Models exposing (Model)
+import Messages exposing (Msg(..))
+import Models exposing (Model, initialModel)
 import Update exposing (update)
 import View exposing (view)
+import Activities.Commands exposing (fetchAll)
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( "Se eu mudar 2...", Cmd.none )
+    ( initialModel, Cmd.map ActivitiesMsg fetchAll )
 
 
 

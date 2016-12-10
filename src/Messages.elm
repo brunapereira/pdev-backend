@@ -1,5 +1,7 @@
 module Messages exposing (..)
 
+import Activities.Messages
+
 
 type Msg
-    = NoOp
+    = ActivitiesMsg Activities.Messages.Msg
