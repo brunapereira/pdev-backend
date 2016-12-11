@@ -5,7 +5,7 @@ type alias Activity =
     { message : String
     , pillar : String
     , date : String
-    , id : Int
+    , id : String
     }
 
 
@@ -14,5 +14,5 @@ new =
     { message = ""
     , pillar = ""
     , date = ""
-    , id = 0
+    , id = ""
     }

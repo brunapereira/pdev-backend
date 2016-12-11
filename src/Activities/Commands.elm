@@ -1,14 +1,14 @@
 module Activities.Commands exposing (..)
 
 import Http
-import Json.Decode as Decode exposing (field)
+import Json.Decode exposing (..)
 import Activities.Models exposing (Activity)
 import Activities.Messages exposing (..)
 
 
 fetchAll : Cmd Msg
 fetchAll =
-    Http.get fetchAllUrl collectionDecoder
+    Http.get fetchAllUrl activityDecoder
         |> Http.send OnFetchAll
 
 
@@ -17,15 +17,11 @@ fetchAllUrl =
     "https://pdev-9f7fc.firebaseio.com/activities.json"
 
 
-collectionDecoder : Decode.Decoder (List Activity)
-collectionDecoder =
-    Decode.list memberDecoder
-
-
-memberDecoder : Decode.Decoder Activity
-memberDecoder =
-    Decode.map4 Activity
-        (field "message" Decode.string)
-        (field "pillar" Decode.string)
-        (field "date" Decode.string)
-        (field "id" Decode.int)
+activityDecoder : Decoder (List Activity)
+activityDecoder =
+    map3 Activity
+        (field "message" string)
+        (field "pillar" string)
+        (field "date" string)
+        |> keyValuePairs
+        |> map (\a -> List.map (\( id, mess ) -> mess id) a)
